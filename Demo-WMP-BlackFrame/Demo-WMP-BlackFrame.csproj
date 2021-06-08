@@ -146,6 +146,7 @@
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\QuickShowVideoPlayerViewModel.cs" />
     <Compile Include="ViewModels\RedRectVideoPlayerViewModel.cs" />
+    <Compile Include="ViewModels\ShowWhenLoadedVideoPlayerViewModel.cs" />
     <Compile Include="ViewModels\SimpleVideoPlayerViewModel.cs" />
     <Compile Include="ViewModels\VideoPlayerViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
@@ -174,6 +175,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RedRectVideoPlayerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ShowWhenLoadedVideoPlayerView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

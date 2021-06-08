@@ -23,6 +23,12 @@ namespace Demo_WMP_BlackFrame.ViewModels
 		{
 		}
 
+		protected void RaisePropertyChanged(params string[] props)
+		{
+			foreach (var prop in props)
+				PropertyChanged.Invoke(this, new PropertyChangedEventArgs(prop));
+		}
+
 		protected bool SetPropertyField<T>(string propName, Func<T, T, bool> fnEqual, T value, ref T field)
 		{
 			return SetPropertyField(new[] { propName }, fnEqual, value, ref field);
