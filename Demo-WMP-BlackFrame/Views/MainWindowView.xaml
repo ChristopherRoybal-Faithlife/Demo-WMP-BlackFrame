@@ -1,0 +1,16 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:vm="clr-namespace:Demo_WMP_BlackFrame.ViewModels">
+	<DataTemplate x:Key="MainWindowViewTemplate" DataType="{x:Type vm:MainWindowViewModel}">
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+
+			<TextBlock Text="Main window!" TextAlignment="Center" />
+			<ContentPresenter Grid.Row="1" x:Name="VideoPlayerPresenter" Content="{Binding VideoPlayerViewModel}" />
+		</Grid>
+	</DataTemplate>
+</ResourceDictionary>
