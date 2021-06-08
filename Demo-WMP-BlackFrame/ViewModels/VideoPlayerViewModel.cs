@@ -15,7 +15,13 @@ namespace Demo_WMP_BlackFrame.ViewModels
 			m_player.ScrubbingEnabled = true;
 		}
 
-		public void Open() => m_player.Open(new Uri(m_settings.Uri));
+		public void Open()
+		{
+			m_player.Open(new Uri(m_settings.Uri));
+			m_player.Position = TimeSpan.FromTicks(1);
+			m_player.Pause();
+		}
+
 		public void Play() => m_player.Play();
 		public void Pause() => m_player.Pause();
 

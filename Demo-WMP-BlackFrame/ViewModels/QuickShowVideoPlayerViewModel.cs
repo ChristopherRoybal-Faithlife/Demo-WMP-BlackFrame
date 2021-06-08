@@ -20,15 +20,34 @@ namespace Demo_WMP_BlackFrame.ViewModels
 			: base(settings)
 		{
 			m_visibility = Visibility.Hidden;
-			Dispatcher.Delay(ShowIt, TimeSpan.FromSeconds(3));
+			m_iters = 3;
+			Dispatcher.Delay(Countdown, TimeSpan.FromSeconds(1));
 		}
 
-		public override string SplashText => "Quick show video player - waits 3 seconds, then opens, plays, and makes the video visible!";
+		public override string SplashText => GetSplashText();
 
 		public Visibility Visibility
 		{
 			get => m_visibility;
 			set => SetPropertyField(nameof(Visibility), (a, b) => a == b, value, ref m_visibility);
+		}
+
+		private string GetSplashText()
+		{
+			if (m_iters > 0)
+				return $"Quickshow: Opening, playing, and making visible in {m_iters} seconds...";
+			else
+				return "Quickshow: Opened and played!";
+		}
+
+		private void Countdown()
+		{
+			SetPropertyField(nameof(SplashText), (x, y) => x == y, m_iters - 1, ref m_iters);
+
+			if (m_iters > 0)
+				Dispatcher.Delay(Countdown, TimeSpan.FromSeconds(1));
+			else
+				ShowIt();
 		}
 
 		private void ShowIt()
@@ -39,5 +58,6 @@ namespace Demo_WMP_BlackFrame.ViewModels
 		}
 
 		Visibility m_visibility;
+		int m_iters;
 	}
 }

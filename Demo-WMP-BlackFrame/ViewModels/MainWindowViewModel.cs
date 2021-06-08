@@ -3,6 +3,7 @@ using Demo_WMP_BlackFrame.Settings;
 using Demo_WMP_BlackFrame.Utility;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 
 namespace Demo_WMP_BlackFrame.ViewModels
 {
@@ -39,6 +40,17 @@ namespace Demo_WMP_BlackFrame.ViewModels
 
 		public ReadOnlyCollection<VideoPlayerKind> VideoPlayerKinds => m_kinds;
 
+		public ICommand RefreshCommand
+		{
+			get
+			{
+				if (m_refreshCommand is null)
+					m_refreshCommand = CommandUtility.Register(CanRefresh, DoRefresh);
+
+				return m_refreshCommand;
+			}
+		}
+
 		protected override void Dispose(bool disposing)
 		{
 			try
@@ -51,9 +63,20 @@ namespace Demo_WMP_BlackFrame.ViewModels
 			}
 		}
 
+		private void DoRefresh()
+		{
+			VideoPlayerViewModel = SelectedKind.Create(m_settings);
+		}
+
+		private bool CanRefresh()
+		{
+			return SelectedKind is object;
+		}
+
 		readonly ReadOnlyCollection<VideoPlayerKind> m_kinds;
 		readonly VideoPlayerSettings m_settings;
 
+		ICommand m_refreshCommand;
 		VideoPlayerKind m_selectedKind;
 		VideoPlayerViewModel m_videoPlayerViewModel;
 	}

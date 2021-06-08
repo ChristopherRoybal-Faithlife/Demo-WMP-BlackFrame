@@ -1,4 +1,5 @@
-﻿using Demo_WMP_BlackFrame.Settings;
+﻿using Demo_WMP_BlackFrame.Models;
+using Demo_WMP_BlackFrame.Settings;
 using Demo_WMP_BlackFrame.Utility;
 using System;
 using System.Collections.Generic;
@@ -20,10 +21,11 @@ namespace Demo_WMP_BlackFrame.ViewModels
 			: base(settings)
 		{
 			m_visibility = Visibility.Hidden;
-			Dispatcher.Delay(BeginShow, TimeSpan.FromSeconds(3));
+			m_iter = c_secondsDelay;
+			Dispatcher.Delay(Countdown, TimeSpan.FromSeconds(1));
 		}
 
-		public override string SplashText => "Waits 3 seconds, opens and starts video, waits 250ms, and then makes visible!";
+		public override string SplashText => GetSplashText();
 
 		public Visibility Visibility
 		{
@@ -31,18 +33,41 @@ namespace Demo_WMP_BlackFrame.ViewModels
 			set => SetPropertyField(nameof(Visibility), (a, b) => a == b, value, ref m_visibility);
 		}
 
+		private void Countdown()
+		{
+			SetPropertyField(nameof(SplashText), (a, b) => a == b, m_iter - 1, ref m_iter);
+
+			if (m_iter > 0)
+				Dispatcher.Delay(Countdown, TimeSpan.FromSeconds(1));
+			else
+				BeginShow();
+		}
+
+		private string GetSplashText()
+		{
+			if (m_iter > 0)
+				return $"Delay show: Waiting {m_iter} seconds to open video... then waits {c_beginShowDelayMs}ms to make visible, and then waits {c_showDelayMs}ms to play it!";
+			else
+				return $"Delay show: Opened video! And then waits {c_beginShowDelayMs}ms to make visible, and then waits {c_showDelayMs}ms to play it!";
+
+		}
+
 		private void BeginShow()
 		{
 			Open();
-			Play();
-			Dispatcher.Delay(Show, TimeSpan.FromMilliseconds(250));
+			Dispatcher.Delay(Show, TimeSpan.FromMilliseconds(c_beginShowDelayMs));
 		}
 
 		private void Show()
 		{
 			Visibility = Visibility.Visible;
+			Dispatcher.Delay(Play, TimeSpan.FromMilliseconds(c_showDelayMs));
 		}
 
+		const int c_secondsDelay = 3;
+		const int c_beginShowDelayMs = 250;
+		const int c_showDelayMs = 1000;
 		Visibility m_visibility;
+		int m_iter;
 	}
 }
