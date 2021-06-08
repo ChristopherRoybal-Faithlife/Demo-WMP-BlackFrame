@@ -18,6 +18,6 @@ namespace Demo_WMP_BlackFrame.ViewModels
 			Play();
 		}
 
-		public string SplashText => "Simple video player - just opens and plays video!";
+		public override string SplashText => "Simple video player - just opens and plays video!";
     }
 }

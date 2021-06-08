@@ -23,6 +23,8 @@ namespace Demo_WMP_BlackFrame.ViewModels
 
 		public Rect NaturalRect => new Rect(new Size(1920, 1080));
 
+		public abstract string SplashText { get; }
+
 		protected override void Dispose(bool disposing)
 		{
 			try
