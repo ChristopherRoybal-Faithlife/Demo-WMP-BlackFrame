@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace Demo_WMP_BlackFrame.Settings
 {
-    public sealed class VideoPlayerSettings
+    public class VideoPlayerSettings
     {
         public string Uri { get; set; }
     }

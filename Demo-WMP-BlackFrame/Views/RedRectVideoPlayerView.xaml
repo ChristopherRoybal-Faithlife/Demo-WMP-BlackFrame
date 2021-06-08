@@ -8,7 +8,7 @@
 				<RowDefinition Height="Auto" />
 				<RowDefinition MinHeight="50" Height="*" />
 			</Grid.RowDefinitions>
-			<TextBlock x:Name="SplashTextBlock" Text="{Binding SplashText}" TextAlignment="Center" />
+			<TextBlock x:Name="SplashTextBlock" Text="{Binding SplashText}" TextWrapping="Wrap" TextAlignment="Center" />
 
 			<!-- Inspired by WindowsVideoPlayer -->
 			<Rectangle Grid.Row="1">
