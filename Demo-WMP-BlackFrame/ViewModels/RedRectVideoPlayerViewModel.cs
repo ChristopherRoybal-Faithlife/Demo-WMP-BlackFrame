@@ -55,7 +55,7 @@ namespace Demo_WMP_BlackFrame.ViewModels
 				break;
 			case RedRectType.CompositionTargetRenderPlay:
 				if (m_iter <= 0)
-					sb.Append($"Video was allowed to play after {c_crStart} CompositionTarget.Renderings!");
+					sb.Append($"Video was allowed to play after {c_crStart} CompositionTarget.Renderings! Took {m_crDiff.TotalMilliseconds}ms!");
 				break;
 			default:
 				break;
@@ -67,6 +67,8 @@ namespace Demo_WMP_BlackFrame.ViewModels
 		private void DoPlay()
 		{
 			RedVisibility = Visibility.Hidden;
+
+			m_crStart = DateTime.Now;
 
 			if (m_redRectType == RedRectType.DelayPlay)
 				Dispatcher.Delay(Play, TimeSpan.FromMilliseconds(250));
@@ -85,6 +87,8 @@ namespace Demo_WMP_BlackFrame.ViewModels
 			{
 				CompositionTarget.Rendering -= CompositionTarget_Rendering;
 				Play();
+
+				SetPropertyField(nameof(SplashText), (a, b) => a == b, DateTime.Now - m_crStart, ref m_crDiff);
 			}
 		}
 
@@ -102,6 +106,9 @@ namespace Demo_WMP_BlackFrame.ViewModels
 		const int c_waitTimeSeconds = 1;
 		const int c_crStart = 2;
 		readonly RedRectType m_redRectType;
+
+		DateTime m_crStart;
+		TimeSpan m_crDiff;
 		int m_cr;
 		int m_iter;
 		Visibility m_redVisiblity;
