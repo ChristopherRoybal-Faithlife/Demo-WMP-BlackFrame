@@ -1,0 +1,27 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:vm="clr-namespace:Demo_WMP_BlackFrame.ViewModels">
+	<DataTemplate DataType="{x:Type vm:RedRectVideoPlayerViewModel}">
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition MinHeight="50" Height="*" />
+			</Grid.RowDefinitions>
+			<TextBlock x:Name="SplashTextBlock" Text="{Binding SplashText}" TextAlignment="Center" />
+
+			<!-- Inspired by WindowsVideoPlayer -->
+			<Rectangle Grid.Row="1">
+				<Rectangle.Fill>
+					<DrawingBrush  Stretch="UniformToFill">
+						<DrawingBrush.Drawing>
+							<VideoDrawing x:Name="VideoDrawingElement" Player="{Binding Player}" Rect="{Binding NaturalRect}" />
+						</DrawingBrush.Drawing>
+					</DrawingBrush>
+				</Rectangle.Fill>
+			</Rectangle>
+
+			<Border Grid.Row="1" Background="Red" Width="150" Visibility="{Binding RedVisibility}" />
+		</Grid>
+	</DataTemplate>
+</ResourceDictionary>
