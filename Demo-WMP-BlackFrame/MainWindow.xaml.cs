@@ -28,5 +28,12 @@ namespace Demo_WMP_BlackFrame
 		}
 
 		public MainWindowViewModel ViewModel { get; }
+
+		protected override void OnClosed(EventArgs e)
+		{
+			base.OnClosed(e);
+			ViewModel.Dispose();
+		}
+
 	}
 }
