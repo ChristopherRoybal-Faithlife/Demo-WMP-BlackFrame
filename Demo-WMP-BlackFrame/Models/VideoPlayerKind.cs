@@ -14,6 +14,7 @@ namespace Demo_WMP_BlackFrame.Models
 
 		public static VideoPlayerKind SimpleVideoKind = Register("Simple", settings => new SimpleVideoPlayerViewModel(settings));
 		public static VideoPlayerKind QuickShowVideoKind = Register("Quick Show", settings => new QuickShowVideoPlayerViewModel(settings));
+		public static VideoPlayerKind DelayShowVideoKind = Register("Delay Show", settings => new DelayShowVideoPlayerViewModel(settings));
 
 		public static ReadOnlyCollection<VideoPlayerKind> GetKinds() => s_kinds.AsReadOnly();
 

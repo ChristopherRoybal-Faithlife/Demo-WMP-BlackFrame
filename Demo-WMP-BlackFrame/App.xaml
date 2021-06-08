@@ -7,6 +7,7 @@
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceDictionary Source="pack://application:,,,/Views/SimpleVideoPlayerView.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/Views/DelayShowVideoPlayerView.xaml" />
 				<ResourceDictionary Source="pack://application:,,,/Views/QuickShowVideoPlayerView.xaml" />
 				<ResourceDictionary Source="pack://application:,,,/Views/MainWindowView.xaml" />
 			</ResourceDictionary.MergedDictionaries>

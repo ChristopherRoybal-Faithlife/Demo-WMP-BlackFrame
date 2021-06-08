@@ -141,6 +141,7 @@
     <Compile Include="Utility\CommandUtility.cs" />
     <Compile Include="Utility\DelayUtility.cs" />
     <Compile Include="Utility\SettingsUtility.cs" />
+    <Compile Include="ViewModels\DelayShowVideoPlayerViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\QuickShowVideoPlayerViewModel.cs" />
     <Compile Include="ViewModels\SimpleVideoPlayerViewModel.cs" />
@@ -158,6 +159,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\DelayShowVideoPlayerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\MainWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
