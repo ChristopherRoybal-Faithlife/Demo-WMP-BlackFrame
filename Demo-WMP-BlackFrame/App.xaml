@@ -12,6 +12,7 @@
 				<ResourceDictionary Source="pack://application:,,,/Views/ShowWhenLoadedVideoPlayerView.xaml" />
 				<ResourceDictionary Source="pack://application:,,,/Views/RedRectVideoPlayerView.xaml" />
 				<ResourceDictionary Source="pack://application:,,,/Views/MainWindowView.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/Views/OpacityVideoPlayerView.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
     </Application.Resources>
