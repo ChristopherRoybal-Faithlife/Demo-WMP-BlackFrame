@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-
-namespace Demo_WMP_BlackFrame.Settings
+﻿namespace Demo_WMP_BlackFrame.Settings
 {
     public class VideoPlayerSettings
     {
-        public string Uri { get; set; }
+        public string VideoFilePath { get; set; }
     }
 }

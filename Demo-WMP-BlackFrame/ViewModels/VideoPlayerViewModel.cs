@@ -17,7 +17,9 @@ namespace Demo_WMP_BlackFrame.ViewModels
 
 		public void Open()
 		{
-			m_player.Open(new Uri(m_settings.Uri));
+			var filePath = Path.GetFullPath(m_settings.VideoFilePath);
+
+			m_player.Open(new Uri(filePath));
 			m_player.Position = TimeSpan.FromTicks(1);
 			m_player.Pause();
 		}
